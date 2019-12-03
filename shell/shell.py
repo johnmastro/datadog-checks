@@ -6,7 +6,10 @@ import logging
 import subprocess
 import tempfile
 
-from checks import AgentCheck
+try:
+    from datadog_checks.base import AgentCheck
+except ImportError:
+    from checks import AgentCheck
 
 log = logging.getLogger(__name__)
 

@@ -1,9 +1,16 @@
-import requests
-
-from checks import AgentCheck
-from util import headers
 import sys
 
+import requests
+
+try:
+    from datadog_checks.utils.headers import headers
+except ImportError:
+    from util import headers
+
+try:
+    from datadog_checks.base import AgentCheck
+except ImportError:
+    from checks import AgentCheck
 
 class CeleryCheck(AgentCheck):
     """Extracts stats from Celery via the Flower REST API

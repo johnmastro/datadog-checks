@@ -2,7 +2,10 @@ import psycopg2 as pg
 import psycopg2.extras as pgextras
 from collections import Counter
 
-from checks import AgentCheck
+try:
+    from datadog_checks.base import AgentCheck
+except ImportError:
+    from checks import AgentCheck
 
 
 class ShouldRestartException(Exception):

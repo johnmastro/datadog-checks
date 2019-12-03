@@ -1,7 +1,10 @@
 import requests
 import sqlalchemy
 
-from checks import AgentCheck
+try:
+    from datadog_checks.base import AgentCheck
+except ImportError:
+    from checks import AgentCheck
 
 AIRFLOW_WEBSERVER_URL_KEY = 'airflow_webserver_url'
 AIRFLOW_SQL_ALCHEMY_CONN_KEY = 'airflow_sql_alchemy_conn'
